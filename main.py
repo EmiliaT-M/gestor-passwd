@@ -23,6 +23,6 @@ def menu():
             break
         else:
             print("Opción inválida. Inténtalo nuevamente.")
-print("No se que hace xd")
+
 class main:
 	menu()
