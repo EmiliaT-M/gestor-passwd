@@ -1,8 +1,8 @@
 from datetime import datetime
 import cifraDatos 
 
-'''Clase contrasena, contiene los atributos a guardar de las contrasenas, como sitio, usuario, contrasena
-fecha en la que fue agregada'''
+'''Clase contrasena, contiene los atributos a guardar de las contrasenas, 
+como sitio, usuario, contrasena fecha en la que fue agregada'''
 
 class contrasena:
 
@@ -10,7 +10,7 @@ class contrasena:
 	def __init__(self, sitio, usuario, contrasena,fecha_creacion):
 		self.__sitio=sitio
 		self.__usuario=usuario
-		self.__contrasena=contrasena
+		self.__contrasena=cifraDatos.encrypt(contrasena)
 		self.__fecha_creacion=datatime.now()
 
 	#Metodo que retorna los valores  del objeto
@@ -30,11 +30,11 @@ class contrasena:
 
 	@property
 	def usuario(self):
-		 return self.__usuario
+		return self.__usuario
 
 	@usuario.setter
 	def set_usuario(self, cambio):
-        	 self.__usuario=cambio
+		self.__usuario=cambio
 
 	@property 
 	def contrasena(self):
