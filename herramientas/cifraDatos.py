@@ -5,8 +5,9 @@ import os
 
 # Generar una clave y un vector de inicialización (IV) únicos
 # La clave debe ser de 16, 24 o 32 bytes (128, 192 o 256 bits)
-KEY = os.urandom(32)  # 256 bits
-IV = os.urandom(16)   # 128 bits
+KEY = b'\xae\x34\x78\xc9\x1f\xd3\x56\xb7\xa1\x89\x45\x62\x7c\xde\xfa\x29\xe0\x3b\xc1\x5d\x9f\x82\x61\xcd\x0a\xeb\xff\x19\xb2\xd7\xac\xe6'
+IV = b'\x94\xab\x37\x68\xfc\x25\x14\xbd\x47\xe9\x53\xa1\x0c\x8f\x32\xde'
+
 
 #Metodo que cifra las contrasenas
 def encrypt(plaintext):
