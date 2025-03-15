@@ -32,7 +32,12 @@ class ConexionBD:
             """INSERT INTO contrasenias (usuario, contrasena, fecha_creacion, sitio) 
             VALUES (?, ?, ?, ?)""", (usuario, contrasena, fecha, sitio)
         )
-        
+    
+    def obtener_datos(self):
+        self.cursor.execute(
+            "SELECT * FROM contrasenias"
+        )
+        return self.cursor.fetchall()
 
     #Metodo que elimina datos, teniendo el sitio como parametro
     def eliminar_datos(self, sitio):
