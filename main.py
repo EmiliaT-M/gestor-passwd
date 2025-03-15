@@ -3,6 +3,7 @@ from herramientas.gestorContrasena import GestorContrasena
 def mostrar_menu():
     """Muestra el menú de opciones."""
     print("\n--- Gestor de Contraseñas ---")
+    print("0. Ver contraseñas")
     print("1. Agregar contraseña")
     print("2. Mostrar contraseñas de un usuario")
     print("3. Eliminar contraseña")
@@ -18,8 +19,11 @@ def main():
     while True:
         mostrar_menu()
         opcion = input("Seleccione una opción: ")
+        
+        if opcion=="0":
+            gestor.mostrar_datos()
 
-        if opcion == "1":  # Agregar contraseña
+        elif opcion == "1":  # Agregar contraseña
             sitio = input("Ingrese el sitio (URL): ")
             usuario = input("Ingrese el usuario: ")
             contrasena = str(input("Ingrese la contraseña: "))
