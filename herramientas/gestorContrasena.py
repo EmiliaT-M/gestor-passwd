@@ -75,22 +75,22 @@ class GestorContrasena:
         if not usuario:
             return "El usuario no puede estar vacío."
         datos = self.conexion.obtener_datos_usuario(usuario)
-        print(datos)
+        
         if not datos:
             return "No se encontraron contraseñas para este usuario."
         resultado = ""
         for fila in datos:
             #Corregir
-            sitio, usuario, contrasena_encriptada, fecha = fila
-            contrasena_desencriptada = decrypt(contrasena_encriptada)
+            #usuario, contrasena_encriptada,fecha,sitio= fila
+            contrasena_desencriptada = decrypt(fila[1])
             resultado += (
-                f"Sitio: {sitio}\n"
-                f"Usuario: {usuario}\n"
-                f"Contraseña: {contrasena_desencriptada}\n"
-                f"Fecha de creación: {fecha}\n"
+                #f"Sitio: {sitio}\nUsuario: {usuario}\n Contraseña: {contrasena_desencriptada}\n Fecha de creación: {fecha}\n"+
+                #"-" * 30 + "\n"
+                f"Sitio: {fila[3]}\nUsuario: {fila[0]}\n Contraseña: {contrasena_desencriptada}\n"+
                 "-" * 30 + "\n"
             )
-        return resultado.strip()
+            
+        return resultado
 
 	#Metodo que cirra la conexion entre la aplicacion y la Base de datos (BD)
     def cerrar_conexion(self):
