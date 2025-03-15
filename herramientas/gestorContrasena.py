@@ -76,8 +76,8 @@ class GestorContrasena:
             datos=self.conexion.obtener_datos()
             print("\n"+"-" * 30 )
             for fila in datos:
-                #contrasena_desencriptada = decrypt(fila[2])
-                print(f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
+                contrasena_desencriptada = decrypt(fila[2])
+                print(f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {contrasena_desencriptada}\n"+
                     "-" * 30 + "\n")
         else: 
             print("PIN no valido, intenta nuevamente.")       
@@ -100,7 +100,7 @@ class GestorContrasena:
                 contrasena_desencriptada = decrypt(fila[2])
                 resultado += (
 
-                    f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
+                    f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {contrasena_desencriptada}\n"+
                     "-" * 30 + "\n"
                 )
                 
