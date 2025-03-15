@@ -55,7 +55,6 @@ class GestorContrasena:
         
         # Crear un objeto Contrasena
         nueva_contrasena = Contrasena(sitio, usuario, contrasena_encriptada)
-        print("Contraseña:"+ contrasena_encriptada)
         # Guardar en la base de datos
         self.conexion.agregar_contrasena(usuario, nueva_contrasena.contrasena, sitio, nueva_contrasena.fecha_creacion)
         return "Contraseña agregada correctamente."
@@ -77,7 +76,7 @@ class GestorContrasena:
             datos=self.conexion.obtener_datos()
             print("\n"+"-" * 30 )
             for fila in datos:
-                contrasena_desencriptada = decrypt(fila[2])
+                #contrasena_desencriptada = decrypt(fila[2])
                 print(f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
                     "-" * 30 + "\n")
         else: 
@@ -98,7 +97,7 @@ class GestorContrasena:
             resultado = "\n"
             for fila in datos:
                 
-                #contrasena_desencriptada = decrypt(fila[2])
+                contrasena_desencriptada = decrypt(fila[2])
                 resultado += (
 
                     f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
