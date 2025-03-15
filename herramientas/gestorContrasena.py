@@ -54,8 +54,8 @@ class GestorContrasena:
         contrasena_encriptada = encrypt(str(contrasena))
         
         # Crear un objeto Contrasena
-        nueva_contrasena = Contrasena(sitio, usuario, contrasena)
-
+        nueva_contrasena = Contrasena(sitio, usuario, contrasena_encriptada)
+        print("Contraseña:"+ contrasena_encriptada)
         # Guardar en la base de datos
         self.conexion.agregar_contrasena(usuario, nueva_contrasena.contrasena, sitio, nueva_contrasena.fecha_creacion)
         return "Contraseña agregada correctamente."
@@ -69,28 +69,45 @@ class GestorContrasena:
         self.conexion.eliminar_datos(sitio)
         return f"Contraseña para el sitio {sitio} eliminada correctamente."
 
+    #Metodos que muestra todos los datos
+    def mostrar_datos(self):
+        contraAux=input("Ingresa PIN de seguridad:")
+
+        if contraAux=="191202":
+            datos=self.conexion.obtener_datos()
+            print("\n"+"-" * 30 )
+            for fila in datos:
+                contrasena_desencriptada = decrypt(fila[2])
+                print(f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
+                    "-" * 30 + "\n")
+        else: 
+            print("PIN no valido, intenta nuevamente.")       
+
 	#--Metodo que muestra los datos del usuario recibido como parametro--
     def mostrar_contrasenas_usuario(self, usuario):
-        """Muestra todas las contraseñas de un usuario."""
-        if not usuario:
-            return "El usuario no puede estar vacío."
-        datos = self.conexion.obtener_datos_usuario(usuario)
-        
-        if not datos:
-            return "No se encontraron contraseñas para este usuario."
-        resultado = ""
-        for fila in datos:
-            #Corregir
-            #usuario, contrasena_encriptada,fecha,sitio= fila
-            contrasena_desencriptada = decrypt(fila[1])
-            resultado += (
-                #f"Sitio: {sitio}\nUsuario: {usuario}\n Contraseña: {contrasena_desencriptada}\n Fecha de creación: {fecha}\n"+
-                #"-" * 30 + "\n"
-                f"Sitio: {fila[3]}\nUsuario: {fila[0]}\n Contraseña: {contrasena_desencriptada}\n"+
-                "-" * 30 + "\n"
-            )
+        contraAux=input("Ingresa PIN de seguridad:")
+
+        if contraAux=="191202":
+            """Muestra todas las contraseñas de un usuario."""
+            if not usuario:
+                return "El usuario no puede estar vacío."
+            datos = self.conexion.obtener_datos_usuario(usuario)
             
-        return resultado
+            if not datos:
+                return "No se encontraron contraseñas para este usuario."
+            resultado = "\n"
+            for fila in datos:
+                
+                #contrasena_desencriptada = decrypt(fila[2])
+                resultado += (
+
+                    f"Sitio: {fila[4]}\nUsuario: {fila[1]}\n Contraseña: {fila[2]}\n"+
+                    "-" * 30 + "\n"
+                )
+                
+            return resultado
+        else:
+            return "Verificacion fallida"
 
 	#Metodo que cirra la conexion entre la aplicacion y la Base de datos (BD)
     def cerrar_conexion(self):
