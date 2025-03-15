@@ -26,7 +26,7 @@ def main():
         elif opcion == "1":  # Agregar contraseña
             sitio = input("Ingrese el sitio (URL): ")
             usuario = input("Ingrese el usuario: ")
-            contrasena = str(input("Ingrese la contraseña: "))
+            contrasena = str(input("Ingrese la contraseña:"))
             resultado = gestor.agregar_contrasena(usuario, contrasena, sitio)
             print(resultado)
 
