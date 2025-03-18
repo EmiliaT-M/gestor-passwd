@@ -82,7 +82,7 @@ class GestorContrasena:
         else: 
             print("PIN no valido, intenta nuevamente.")       
 
-	#--Metodo que muestra los datos del usuario recibido como parametro--
+	#Metodo que muestra los datos del usuario recibido como parametro
     def mostrar_contrasenas_usuario(self, usuario):
         contraAux=input("Ingresa PIN de seguridad:")
 

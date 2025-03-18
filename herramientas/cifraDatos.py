@@ -52,5 +52,3 @@ def decrypt(ciphertext):
     except Exception as e:
         print(f"Error al desencriptar: {e}")
         return None
-
-#

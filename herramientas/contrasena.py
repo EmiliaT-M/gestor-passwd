@@ -3,6 +3,7 @@ Autor EmiliaT-M
 En esta clase se encuentran los atributos que debe guardarse para una contraseña,
 como usuario, sitio, contrasena'''
 
+
 from datetime import datetime
 from herramientas.cifraDatos import encrypt, decrypt
 
