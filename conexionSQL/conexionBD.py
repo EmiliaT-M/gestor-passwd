@@ -3,7 +3,7 @@ Autor EmiliaT-M
 Contiene la conexion para la base de datos y los metodos que permitiran agregar, modificar o eliminar 
 los datos contenidos de el gestorDB.db'''
 
-import sqlite3
+import sqlite3 #SQLite3
 
 class ConexionBD:
 
@@ -46,14 +46,12 @@ class ConexionBD:
             "DELETE FROM contrasenias WHERE sitio=?", (sitio,)
         )
        
-
     #Metodo que realizar cambios de contraseña
     def cambiar_contrasena(self, sitio, contrasena):
         """Actualiza la contraseña de un sitio."""
         self.cursor.execute(
             "UPDATE contrasenias SET contrasena=? WHERE sitio=?", (contrasena, sitio)
-        )
-        
+        )   
 
     #Metodo que cambia el nombre del usuario 
     def cambiar_usuario(self, sitio, usuario):
