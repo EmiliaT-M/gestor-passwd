@@ -7,7 +7,7 @@ def mostrar_menu():
     print("1. Agregar contraseña")
     print("2. Mostrar contraseñas de un usuario")
     print("3. Eliminar contraseña")
-    print("4. Actualizar contraseña")
+    print("4. Actualizar datos")
     print("5. Guardar cambios y salir")
     print("6. Salir sin guardar cambios")
 
@@ -40,11 +40,23 @@ def main():
             resultado = gestor.eliminar_datos(sitio)
             print(resultado)
 
-        elif opcion == "4":  # Actualizar contraseña
+        elif opcion == "4":  # Actualizar datos           
+
             sitio = input("Ingrese el sitio (URL) a actualizar: ")
-            nueva_contrasena = input("Ingrese la nueva contraseña: ")
-            gestor.conexion.cambiar_contrasena(sitio, nueva_contrasena)
-            print("Contraseña actualizada correctamente.")
+            aux=input("Cambiar contraseña (c) usuario(u):")
+            if aux.lower()=='c':
+                aux="contrasena"
+                aux_contrasena=input("Ingresa nueva contraseña: ")
+                gestor.cambiar_datos(aux,sitio,aux_contrasena)
+                print("Contraseña actualizada correctamente.")
+            
+            elif aux.lower()=='u':
+                aux="usuario"
+                aux_usuario=input("Ingresa el nuevo usuario: ")
+                gestor.cambiar_datos(aux,sitio,aux_usuario)
+                print("Usuario actualizada correctamente.")           
+            else:
+                print("No se encontraron datos")
 
         elif opcion == "5":  # Guardar y salir
             gestor.conexion.guardar_cambios()
