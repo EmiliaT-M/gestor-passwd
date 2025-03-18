@@ -80,6 +80,7 @@ def main():
             print("Opción no válida. Intente nuevamente.")
 
     gestor.cerrar_conexion()
+    print("Vuelve pronto :)")
 
 if __name__ == "__main__":
     main()
