@@ -108,6 +108,18 @@ class GestorContrasena:
         else:
             return "Verificacion fallida"
 
+
+    #Metodo que actualiza contrasena----
+    def cambiar_datos(self,tipo_valor_cambiar, sitio, nuevo_valor):
+        #Cambia contrasena
+        if tipo_valor_cambiar=="contrasena":
+            self.conexion.cambiar_contrasena(sitio,encrypt(nuevo_valor))
+        #Cabiar usuario
+        elif tipo_valor_cambiar=="usuario":
+            self.conexion.cambiar_usuario(sitio,nuevo_valor)
+        else: 
+            print("Valor no encontrado")
+
 	#Metodo que cirra la conexion entre la aplicacion y la Base de datos (BD)
     def cerrar_conexion(self):
         """Cierra la conexión a la base de datos."""
